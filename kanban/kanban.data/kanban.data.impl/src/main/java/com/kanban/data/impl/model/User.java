@@ -1,15 +1,10 @@
 package com.kanban.data.impl.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -28,7 +23,6 @@ public class User implements java.io.Serializable {
 	private String identification;
 	private String name;
 	private String lastname;
-	private Set<Task> tasks = new HashSet<Task>(0);
 
 	public User() {
 	}
@@ -38,14 +32,6 @@ public class User implements java.io.Serializable {
 		this.identification = identification;
 		this.name = name;
 		this.lastname = lastname;
-	}
-
-	public User(String pass, String identification, String name, String lastname, Set<Task> tasks) {
-		this.pass = pass;
-		this.identification = identification;
-		this.name = name;
-		this.lastname = lastname;
-		this.tasks = tasks;
 	}
 
 	@Id
@@ -93,15 +79,6 @@ public class User implements java.io.Serializable {
 
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-	public Set<Task> getTasks() {
-		return this.tasks;
-	}
-
-	public void setTasks(Set<Task> tasks) {
-		this.tasks = tasks;
 	}
 
 }

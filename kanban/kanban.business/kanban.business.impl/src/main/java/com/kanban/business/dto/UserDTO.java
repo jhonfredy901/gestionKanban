@@ -1,14 +1,10 @@
 package com.kanban.business.dto;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.kanban.business.common.EnumAction;
-import com.kanban.data.impl.model.Task;
 import com.kanban.data.impl.model.User;
 
 @XmlRootElement
@@ -26,7 +22,6 @@ public class UserDTO implements Serializable {
 	private EnumAction action;
 	private Integer startPosition;
 	private Integer maxResult;
-	private Set<NestedTaskDTO> tasks = new HashSet<>();
 
 	public UserDTO() {
 	}
@@ -38,11 +33,6 @@ public class UserDTO implements Serializable {
 			this.identification = entity.getIdentification();
 			this.name = entity.getName();
 			this.lastname = entity.getLastname();
-			Iterator<Task> iterTasks = entity.getTasks().iterator();
-			while (iterTasks.hasNext()) {
-				Task element = iterTasks.next();
-				this.tasks.add(new NestedTaskDTO(element));
-			}
 		}
 	}
 
@@ -97,13 +87,13 @@ public class UserDTO implements Serializable {
 		this.lastname = lastname;
 	}
 
-	public Set<NestedTaskDTO> getTasks() {
-		return this.tasks;
-	}
-
-	public void setTasks(final Set<NestedTaskDTO> tasks) {
-		this.tasks = tasks;
-	}
+//	public Set<NestedTaskDTO> getTasks() {
+//		return this.tasks;
+//	}
+//
+//	public void setTasks(final Set<NestedTaskDTO> tasks) {
+//		this.tasks = tasks;
+//	}
 
 	/**
 	 * @return the action

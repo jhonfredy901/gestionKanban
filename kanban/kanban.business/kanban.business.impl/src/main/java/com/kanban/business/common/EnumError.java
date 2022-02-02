@@ -9,6 +9,8 @@ public enum EnumError {
 	ERR_104(104, "No fue posible borrar el registro, verifíque los datos en intente nuevamente. {}"),
 	ERR_105(105, "No fue posible obtener el registro, verifíque los datos en intente nuevamente."),
 	ERR_106(106, "El registro ya existe, verifíque los datos en intente nuevamente."),
+	ERR_107(107, "Verifique la información ingresada, no se encontró usuario con identificación enviada."),
+	ERR_108(108, "Contraseña incorrecta por favor valide y vuelva a intentar.")
 	
 	
 	;

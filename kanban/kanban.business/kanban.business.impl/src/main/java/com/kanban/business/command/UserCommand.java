@@ -85,6 +85,7 @@ public class UserCommand extends Command<UserDTO, Object> {
 				throw new BusinessException(EnumError.ERR_105.getValue());
 			}
 			getEm().remove(entity);
+			result = true;
 		} catch (PersistenceException e) {
 			LOG.error(EnumError.ERR_104.getValue(), e);
 			throw new BusinessException(EnumError.ERR_104.getNum(), EnumError.ERR_104.getValue());
@@ -98,7 +99,7 @@ public class UserCommand extends Command<UserDTO, Object> {
 				throw new BusinessException(EnumError.ERR_105.getValue());
 			}
 			entity = input.fromDTO(entity);
-			entity = getEm().merge(entity);
+			getEm().merge(entity);
 			result = entity;
 		} catch (PersistenceException e) {
 			LOG.error(EnumError.ERR_103.getValue(), e);
@@ -124,7 +125,7 @@ public class UserCommand extends Command<UserDTO, Object> {
 	private void getUserById() throws BusinessException {
 		try {
 			TypedQuery<User> findByIdQuery = getEm().createQuery(
-					"SELECT DISTINCT u FROM User u LEFT JOIN FETCH u.tasks WHERE u.id = :entityId ORDER BY u.id",
+					"SELECT DISTINCT u FROM User u WHERE u.id = :entityId ORDER BY u.id",
 					User.class);
 			findByIdQuery.setParameter("entityId", input.getId());
 			User entity;
@@ -142,7 +143,7 @@ public class UserCommand extends Command<UserDTO, Object> {
 
 	private void getUserAll() {
 		TypedQuery<User> findAllQuery = getEm()
-				.createQuery("SELECT DISTINCT u FROM User u LEFT JOIN FETCH u.tasks ORDER BY u.id", User.class);
+				.createQuery("SELECT DISTINCT u FROM User u ORDER BY u.id", User.class);
 		if (input.getStartPosition() != null) {
 			findAllQuery.setFirstResult(input.getStartPosition());
 		}

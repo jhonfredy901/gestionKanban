@@ -60,6 +60,7 @@ public class UserEndpoint {
 
 	@DELETE
 	@Path("/{id:[0-9][0-9]*}")
+	@Produces("application/json")
 	public Response deleteById(@PathParam("id") int id) {
 		response = new GenericResponse();
 		try {
@@ -105,7 +106,7 @@ public class UserEndpoint {
 			UserDTO dto = new UserDTO();
 			dto.setStartPosition(startPosition);
 			dto.setMaxResult(maxResult);
-			dto.setAction(EnumAction.GETID);
+			dto.setAction(EnumAction.GETFULL);
 			userCmd.setInput(dto);
 			userCmd.execute();
 			response.setData(userCmd.getOut());
@@ -120,6 +121,7 @@ public class UserEndpoint {
 	@PUT
 	@Path("/{id:[0-9][0-9]*}")
 	@Consumes("application/json")
+	@Produces("application/json")
 	public Response update(@PathParam("id") int id, UserDTO dto) {
 		response = new GenericResponse();
 		try {
@@ -129,7 +131,7 @@ public class UserEndpoint {
 			userCmd.execute();
 			response.setData(userCmd.getOut());
 		} catch (BusinessException e) {
-			LOG.error(EnumError.ERR_100.getValue(), this.getClass(), e.getCause(), e);
+			LOG.error(EnumError.ERR_100.getValue(), e);
 			response.setData(e.getCode());
 			response.setMessage(e.getMessage());
 		}
