@@ -1,0 +1,10 @@
+/home/jhernandez/Documentos/kanban/kanban/kanban.business/kanban.business.impl/src/main/java/com/kanban/business/command/UserCommand.java
+/home/jhernandez/Documentos/kanban/kanban/kanban.business/kanban.business.impl/src/main/java/com/kanban/business/common/EnumAction.java
+/home/jhernandez/Documentos/kanban/kanban/kanban.business/kanban.business.impl/src/main/java/com/kanban/business/common/BusinessException.java
+/home/jhernandez/Documentos/kanban/kanban/kanban.business/kanban.business.impl/src/main/java/com/kanban/business/common/GenericResponse.java
+/home/jhernandez/Documentos/kanban/kanban/kanban.business/kanban.business.impl/src/main/java/com/kanban/business/common/Command.java
+/home/jhernandez/Documentos/kanban/kanban/kanban.business/kanban.business.impl/src/main/java/com/kanban/business/common/EnumText.java
+/home/jhernandez/Documentos/kanban/kanban/kanban.business/kanban.business.impl/src/main/java/com/kanban/business/dto/NestedTaskDTO.java
+/home/jhernandez/Documentos/kanban/kanban/kanban.business/kanban.business.impl/src/main/java/com/kanban/business/dto/UserDTO.java
+/home/jhernandez/Documentos/kanban/kanban/kanban.business/kanban.business.impl/src/main/java/com/kanban/business/common/Util.java
+/home/jhernandez/Documentos/kanban/kanban/kanban.business/kanban.business.impl/src/main/java/com/kanban/business/common/EnumError.java
