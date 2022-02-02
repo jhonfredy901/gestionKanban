@@ -16,7 +16,7 @@ public class TaskDTO implements java.io.Serializable {
 	private String code;
 	private String description;
 	private int duration;
-	private String status;
+	private String status; //EN PROGRESO, ABIERTA, CERRADA
 	private int iduser;
 	private EnumAction action;
 	private Integer startPosition;

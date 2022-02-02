@@ -3,7 +3,6 @@
  */
 package com.kanban.business.command;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.NoResultException;
@@ -126,15 +125,14 @@ public class TaskCommand extends Command<TaskDTO, Object> {
 	private void getTaskById() throws BusinessException {
 		try {
 			TypedQuery<Task> findByIdQuery = getEm()
-					.createQuery("SELECT DISTINCT t FROM Task t WHERE t.id = :entityId ORDER BY u.id", Task.class);
+					.createQuery("SELECT DISTINCT t FROM Task t WHERE t.id = :entityId ORDER BY t.id", Task.class);
 			findByIdQuery.setParameter("entityId", input.getId());
 			Task entity;
 			entity = findByIdQuery.getSingleResult();
 			if (entity == null) {
 				throw new BusinessException(EnumError.ERR_105.getValue());
 			}
-			TaskDTO dto = new TaskDTO(entity);
-			result = dto;
+			result = entity;
 		} catch (PersistenceException e) {
 			LOG.error(EnumError.ERR_105.getValue(), e);
 			throw new BusinessException(EnumError.ERR_105.getNum(), EnumError.ERR_105.getValue());
@@ -150,12 +148,12 @@ public class TaskCommand extends Command<TaskDTO, Object> {
 			findAllQuery.setMaxResults(input.getMaxResult());
 		}
 		List<Task> searchResults = findAllQuery.getResultList();
-		List<TaskDTO> results = new ArrayList<>();
-		for (Task searchResult : searchResults) {
-			TaskDTO dto = new TaskDTO(searchResult);
-			results.add(dto);
-		}
-		result = results;
+//		List<TaskDTO> results = new ArrayList<>();
+//		for (Task searchResult : searchResults) {
+//			TaskDTO dto = new TaskDTO(searchResult);
+//			results.add(dto);
+//		}
+		result = searchResults;
 	}
 
 	private Task getTaskByCode() {

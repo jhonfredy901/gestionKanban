@@ -8,8 +8,8 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:jboss/datasources/kanban</jta-data-source>
 		<class>com.kanban.data.impl.model.User</class>
-		<class>com.kanban.data.impl.model.Task</class>
 		<class>com.kanban.data.impl.model.Board</class>
+		<class>com.kanban.data.impl.model.Task</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<!-- <property name="hibernate.hbm2ddl.auto" value="create-drop" /> -->
