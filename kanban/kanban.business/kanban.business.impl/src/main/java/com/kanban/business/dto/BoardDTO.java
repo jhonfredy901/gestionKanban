@@ -1,23 +1,18 @@
 package com.kanban.business.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.xml.bind.annotation.XmlRootElement;
-
 import com.kanban.business.common.EnumAction;
 import com.kanban.data.impl.model.Board;
 
-@XmlRootElement
 public class BoardDTO implements java.io.Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 8805193362571383030L;
-	private int id;
+	private long id;
 	private String code;
 	private String name;
-	private int idtask;
+	private long idtask;
 	private EnumAction action;
 	private Integer startPosition;
 	private Integer maxResult;
@@ -72,23 +67,20 @@ public class BoardDTO implements java.io.Serializable {
 	public BoardDTO() {
 	}
 
-	public BoardDTO(String code, String name, int idtask) {
+	public BoardDTO(String code, String name, long idtask) {
 		this.code = code;
 		this.name = name;
 		this.idtask = idtask;
 	}
 
-	@Id
-	@Column(name = "id", unique = true, nullable = false)
-	public int getId() {
+	public long getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
-	@Column(name = "code", nullable = false, length = 5)
 	public String getCode() {
 		return this.code;
 	}
@@ -97,7 +89,6 @@ public class BoardDTO implements java.io.Serializable {
 		this.code = code;
 	}
 
-	@Column(name = "name", nullable = false, length = 100)
 	public String getName() {
 		return this.name;
 	}
@@ -106,12 +97,11 @@ public class BoardDTO implements java.io.Serializable {
 		this.name = name;
 	}
 
-	@Column(name = "idtask", nullable = false)
-	public int getIdtask() {
+	public long getIdtask() {
 		return this.idtask;
 	}
 
-	public void setIdtask(int idtask) {
+	public void setIdtask(long idtask) {
 		this.idtask = idtask;
 	}
 

@@ -2,6 +2,8 @@ package com.kanban.data.impl.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -18,32 +20,34 @@ public class Board implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 8805193362571383030L;
-	private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", updatable = false, nullable = false)
+	private long id;
+	@Column(name = "code", nullable = false, length = 5)
 	private String code;
+	@Column(name = "name", nullable = false, length = 100)
 	private String name;
-	private int idtask;
+	@Column(name = "idtask", nullable = false)
+	private long idtask;
 
 	public Board() {
 	}
 
-	public Board(int id, String code, String name, int idtask) {
-		this.id = id;
+	public Board(String code, String name, int idtask) {
 		this.code = code;
 		this.name = name;
 		this.idtask = idtask;
 	}
 
-	@Id
-	@Column(name = "id", unique = true, nullable = false)
-	public int getId() {
+	public long getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
-	@Column(name = "code", nullable = false, length = 5)
 	public String getCode() {
 		return this.code;
 	}
@@ -52,7 +56,6 @@ public class Board implements java.io.Serializable {
 		this.code = code;
 	}
 
-	@Column(name = "name", nullable = false, length = 100)
 	public String getName() {
 		return this.name;
 	}
@@ -61,12 +64,11 @@ public class Board implements java.io.Serializable {
 		this.name = name;
 	}
 
-	@Column(name = "idtask", nullable = false)
-	public int getIdtask() {
+	public long getIdtask() {
 		return this.idtask;
 	}
 
-	public void setIdtask(int idtask) {
+	public void setIdtask(long idtask) {
 		this.idtask = idtask;
 	}
 

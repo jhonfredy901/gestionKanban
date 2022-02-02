@@ -12,12 +12,12 @@ public class TaskDTO implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 9103028713192105524L;
-	private int id;
+	private long id;
 	private String code;
 	private String description;
-	private int duration;
-	private String status; //EN PROGRESO, ABIERTA, CERRADA
-	private int iduser;
+	private double duration;
+	private String status; // EN PROGRESO, ABIERTA, CERRADA
+	private long iduser;
 	private EnumAction action;
 	private Integer startPosition;
 
@@ -99,11 +99,11 @@ public class TaskDTO implements java.io.Serializable {
 		this.iduser = iduser;
 	}
 
-	public int getId() {
+	public long getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -123,11 +123,11 @@ public class TaskDTO implements java.io.Serializable {
 		this.description = description;
 	}
 
-	public int getDuration() {
+	public double getDuration() {
 		return this.duration;
 	}
 
-	public void setDuration(int duration) {
+	public void setDuration(double duration) {
 		this.duration = duration;
 	}
 
@@ -139,11 +139,11 @@ public class TaskDTO implements java.io.Serializable {
 		this.status = status;
 	}
 
-	public int getIduser() {
+	public long getIduser() {
 		return this.iduser;
 	}
 
-	public void setIduser(int iduser) {
+	public void setIduser(long iduser) {
 		this.iduser = iduser;
 	}
 

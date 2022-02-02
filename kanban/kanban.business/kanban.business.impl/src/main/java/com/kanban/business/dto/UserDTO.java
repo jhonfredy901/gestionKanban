@@ -14,7 +14,7 @@ public class UserDTO implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -6853466744729234653L;
-	private int id;
+	private long id;
 	private String pass;
 	private String identification;
 	private String name;
@@ -26,7 +26,7 @@ public class UserDTO implements Serializable {
 	public UserDTO() {
 	}
 
-	public UserDTO(final User entity) {
+	public UserDTO(User entity) {
 		if (entity != null) {
 			this.id = entity.getId();
 			this.pass = entity.getPass();
@@ -47,11 +47,11 @@ public class UserDTO implements Serializable {
 		return entity;
 	}
 
-	public int getId() {
+	public long getId() {
 		return this.id;
 	}
 
-	public void setId(final int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

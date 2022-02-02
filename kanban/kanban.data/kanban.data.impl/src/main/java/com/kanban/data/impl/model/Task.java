@@ -20,36 +20,39 @@ public class Task implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 9103028713192105524L;
-	private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", updatable = false, nullable = false)
+	private long id;
+	@Column(name = "code", nullable = false, length = 5)
 	private String code;
+	@Column(name = "description", nullable = false, length = 200)
 	private String description;
-	private int duration;
+	@Column(name = "duration", nullable = false)
+	private double duration;
+	@Column(name = "status", nullable = false, length = 20)
 	private String status;
-	private int iduser;
+	@Column(name = "iduser", nullable = false)
+	private long iduser;
 
 	public Task() {
 	}
 
-	public Task(String code, String description, int duration, String status, int iduser) {
+	public Task(String code, String description, int duration, String status) {
 		this.code = code;
 		this.description = description;
 		this.duration = duration;
 		this.status = status;
-		this.iduser = iduser;
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id", unique = true, nullable = false)
-	public int getId() {
+	public long getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
-	@Column(name = "code", nullable = false, length = 5)
 	public String getCode() {
 		return this.code;
 	}
@@ -58,7 +61,6 @@ public class Task implements java.io.Serializable {
 		this.code = code;
 	}
 
-	@Column(name = "description", nullable = false, length = 200)
 	public String getDescription() {
 		return this.description;
 	}
@@ -67,16 +69,14 @@ public class Task implements java.io.Serializable {
 		this.description = description;
 	}
 
-	@Column(name = "duration", nullable = false)
-	public int getDuration() {
+	public double getDuration() {
 		return this.duration;
 	}
 
-	public void setDuration(int duration) {
+	public void setDuration(double duration) {
 		this.duration = duration;
 	}
 
-	@Column(name = "status", nullable = false, length = 20)
 	public String getStatus() {
 		return this.status;
 	}
@@ -85,12 +85,11 @@ public class Task implements java.io.Serializable {
 		this.status = status;
 	}
 
-	@Column(name = "iduser", nullable = false)
-	public int getIduser() {
+	public long getIduser() {
 		return this.iduser;
 	}
 
-	public void setIduser(int iduser) {
+	public void setIduser(long iduser) {
 		this.iduser = iduser;
 	}
 

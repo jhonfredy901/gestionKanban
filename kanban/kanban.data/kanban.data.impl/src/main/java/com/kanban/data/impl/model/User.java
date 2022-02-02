@@ -18,10 +18,17 @@ public class User implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 7663430502162221687L;
-	private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", updatable = false, nullable = false)
+	private long id;
+	@Column(name = "pass", nullable = false, length = 50)
 	private String pass;
+	@Column(name = "identification", nullable = false, length = 15)
 	private String identification;
+	@Column(name = "name", nullable = false, length = 100)
 	private String name;
+	@Column(name = "lastname", nullable = false, length = 100)
 	private String lastname;
 
 	public User() {
@@ -34,18 +41,14 @@ public class User implements java.io.Serializable {
 		this.lastname = lastname;
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id", unique = true, nullable = false)
-	public int getId() {
+	public long getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
-	@Column(name = "pass", nullable = false, length = 50)
 	public String getPass() {
 		return this.pass;
 	}
@@ -54,7 +57,6 @@ public class User implements java.io.Serializable {
 		this.pass = pass;
 	}
 
-	@Column(name = "identification", nullable = false, length = 15)
 	public String getIdentification() {
 		return this.identification;
 	}
@@ -63,7 +65,6 @@ public class User implements java.io.Serializable {
 		this.identification = identification;
 	}
 
-	@Column(name = "name", nullable = false, length = 100)
 	public String getName() {
 		return this.name;
 	}
@@ -72,7 +73,6 @@ public class User implements java.io.Serializable {
 		this.name = name;
 	}
 
-	@Column(name = "lastname", nullable = false, length = 100)
 	public String getLastname() {
 		return this.lastname;
 	}
