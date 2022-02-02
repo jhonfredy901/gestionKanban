@@ -87,14 +87,6 @@ public class UserDTO implements Serializable {
 		this.lastname = lastname;
 	}
 
-//	public Set<NestedTaskDTO> getTasks() {
-//		return this.tasks;
-//	}
-//
-//	public void setTasks(final Set<NestedTaskDTO> tasks) {
-//		this.tasks = tasks;
-//	}
-
 	/**
 	 * @return the action
 	 */
