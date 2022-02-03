@@ -1,1 +1,31 @@
-# gestionKanban
+# Gestión Tablero Kanban
+
+## 1. Arquitectura de solución
+La arquitectura planteada para dar solución a la problematica es una arquitectura de microservicios, a continuación se muestra distintas vistas para mejorar su entendimiento.
+
+Siguiendo los principios SOLID de programacion orientada objectos y buenas practicas de arquitecturas limpias, para el desarrollo de la solución se utiliza java y contenedores docker. 
+* Separacion por capas (data,business,service).
+* Separar responsabilidades manejo de login, gestion de usuarios, gestion de tareas y tableros.
+* Usar caracteristicas de herencia para manejar a traves de patrones de diseño [Patron Comando](https://es.wikipedia.org/wiki/Command_(patr%C3%B3n_de_dise%C3%B1o)) para estructurar la forma de ejecutar una operación.
+* Inversion de dependencias al impedir que un componente de una capa inferior acceda a una capa superior.
+* Manejando excepciones para los componentes reuqeridos.
+
+## 1.2. Vista de despliegue
+El despliegue del microservicio se realiza en Google Cloud Plataform usando contenedores Docker para gestionar cada componente, tanto base de datos como backend.
+
+![](kanban/apidocs/vistaDespliegue.png?raw=true)
+
+### 1.2.1. Enpoints
+Se relaciona la dirección de la documentación por medio de la especificacion swagger de todos los enpoints disponibles para el manejo de a solución.
+
+## 2. Instalación de microservicio
+Para poder instalar el correspondiente proyecto se hace necesario por primera vez la ejecución del comando de docker-compose el cual genera el ambiente con dos contenedores, uno para unservidor wildfly y otro con un sistema gestor de bases de datos postgresql.
+
+### 2.1 Construccion de composicion de postgres y wildfly
+docker-compose up -d --build
+
+### 2.2. Construir imagen de wildfly
+docker build -q --rm --tag=jboss/wildfly:11-kanban .
+
+### 2.3. Ejecutar creacion de contenedor
+docker run -d -p 8083:8080 -p 8084:9990 -p 8085:8443 --name kanban-app -it jboss/wildfly:11-kanban
