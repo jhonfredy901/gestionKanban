@@ -27,11 +27,14 @@ public class LoginCommand extends Command<LoginDto, Object> {
 		Util.isEmpty(input.getIdentification(), EnumText.IDENTIFICATION.getValue());
 		Util.isEmpty(input.getPassword(), EnumText.PASS.getValue());
 		isValid = true;
-
 	}
 
 	@Override
 	protected void executeCommand() throws BusinessException {
+		validateLogin();
+	}
+
+	public void validateLogin() throws BusinessException {
 		TypedQuery<User> query = getEm().createQuery("SELECT u FROM User u WHERE u.identification = :identification",
 				User.class);
 		query.setParameter("identification", input.getIdentification());
