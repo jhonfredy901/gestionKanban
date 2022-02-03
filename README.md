@@ -17,6 +17,7 @@ El despliegue del microservicio se realiza en Google Cloud Plataform usando cont
 
 ### 1.2.1. Enpoints
 Se relaciona la dirección de la documentación por medio de la especificacion swagger de todos los enpoints disponibles para el manejo de a solución.
+ http://34.125.24.35:8083/apidocs/#/
 
 ## 2. Instalación de microservicio
 Para poder instalar el correspondiente proyecto se hace necesario por primera vez la ejecución del comando de docker-compose el cual genera el ambiente con dos contenedores, uno para unservidor wildfly y otro con un sistema gestor de bases de datos postgresql.
